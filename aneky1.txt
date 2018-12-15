@@ -1,0 +1,6 @@
+AnekYoutube1.txt
+Fired :- git checkout --track origin/AnekYoutube1
+that means it will create the local branch with name AnekYoutube1 and sync it with the remote
+AnekYoutube1 branch ....
+
+cool isn't is ?
