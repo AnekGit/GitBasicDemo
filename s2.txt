@@ -1,0 +1,5 @@
+executed -> git checkout -B AnekYoutube origin/AnekYoutube [since AnekYoutube branch already existed .]
+
+Had AnekYoutube [local branch ] not existed then we would have executed below command 
+
+git checkout -b AnekYoutube origin/AnekYoutube 
