@@ -52,6 +52,29 @@ cat <some_filename> | sed 's/old_value/new_value'
 cat <some_filename> | sed 's/old_value/new_value/g'
 cat <some_filename> | sed 's/^/ <some_new_value_that_is_gonna_inserted_at_the_begining> /g'
 cat <some_filename> | sed 's/$/ <some_new_value_that_is_gonna_inserted_at_the_end> /g'
+cat <some_filename> | sed G
+cat <some-filename> | sed 's/^/ * /'
+cat <some-filename> | sed -n 3,5p
+cat <some-filename> | sed ' 7! s/old/new/g'
+cat <some-filename> | sed '3d'
+cat <some-filename> | sed '3,5d'
+sed '$d'
+sed '1d'
+sed -e '$d' -e 'G'
+sed '  /25/ < ie. some keyword for that line >  s/old/new'
+sed ' 0-3p '  => starting from 0 aand every third line will be deleted 
+sed -r 's/firewall/\U&/ig'
+sed  -i ' s/old/new/ig' <privide-your-filename>   => To make changes in the same filename
+
+
+
+
+
+
+
+
+
+
 
 To create tar file 
 ===================
@@ -109,7 +132,7 @@ Read this before starting any checkout locally from remote
 https://stackoverflow.com/questions/10002239/difference-between-git-checkout-track-origin-branch-and-git-checkout-b-branch/10002469#10002469
 
 
-
+	
 What is the difference between 
 --------------------------------
 git checkout -b branch origin/branch
