@@ -1,0 +1,239 @@
+
+HOw to login from local folder to JUmphost or ubuntu server 
+==============================================================
+vagrant.exe ssh Centos7          [same as   config.vm.define :Centos7]
+vagrant.exe ssh Ubuntus16        [same as   config.vm.define :Ubuntus16 ]
+
+the from suppose Ubuntus16 machine in .ssh folder 
+the generate public-private keys 
+================================
+ssh-keygen -t rsa -b 4096 
+
+then from different powershell login to Centos7 Machine and do 
+sudo su - to get the root user .
+
+
+What happends exactly when you do 
+
+vagrant up
+===========
+1. ssh key is generated for windows 
+
+
+
+
+LOgin to different machine from Ubuntu Jump HOst 
+===================================================
+since you are already in Ubuntus16 
+------------------------------------
+ssh -i /home/vagrant/id_rsa vagrant@192.168.50.51
+
+
+  Or
+ssh vagrant@192.168.50.50
+
+Inorder to do ssh machine_name  then you have to perform below steps
+---------------------------------------------------------------------
+1. cd /etc/ and folder hosts -> vi hosts 
+
+suppose you want to ping to the machine 
+=======================================
+ping 192.168.50.50
+then if you have not configured the IP address in /etc/hosts file then you will get 127.0.0.1 
+so once you have configured then instead of 127.0.0. you will get 192.168.50.50 
+MOreover if you configure the same settings inthe same Ubuntu machine for centos then 
+you can ping the centos from the ubuntu and get to see the IPs .
+
+
+
+sed 
+===
+cat <some_filename> | sed 's/old_value/new_value'
+cat <some_filename> | sed 's/old_value/new_value/g'
+cat <some_filename> | sed 's/^/ <some_new_value_that_is_gonna_inserted_at_the_begining> /g'
+cat <some_filename> | sed 's/$/ <some_new_value_that_is_gonna_inserted_at_the_end> /g'
+
+To create tar file 
+===================
+tar -c   => tocreate 
+tar -c   => to unzip
+tar -v   => to see the details
+tar -t   => to see the content 
+tar -z for gzip 
+tar -j for bzip2
+
+
+
+sudo su -
+crontab -l  => its a daemon runing in all the linux machines
+shows the list of 
+crontab -e    ==> to open the crontab editor 
+
+to see the cron job logs -> /var/log/syslog 
+
+
+Do log BackUp 
+=============
+create a script and scp to remote server 
+
+*/2 * * * * => for crontab 
+
+
+
+ rsync -avz /root/source/testzip/* /root/backup/ubuntu/  -> compress
+ serivce --status-all 
+ 
+ Rsyncing Production use case 
+ ==============================
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+git config --global -l
+
+
+To check all the remote branches 
+--------------------------------
+git branch -v 
+
+Read this before starting any checkout locally from remote
+============================================================
+
+https://stackoverflow.com/questions/10002239/difference-between-git-checkout-track-origin-branch-and-git-checkout-b-branch/10002469#10002469
+
+
+
+What is the difference between 
+--------------------------------
+git checkout -b branch origin/branch
+
+git checkout --track origin/branch
+
+
+
+The two commands have the same effect (thanks to Robert Siemerâ€™s answer for pointing it out).
+
+The practical difference comes when using a local branch named differently:
+
+git checkout -b mybranch origin/abranch will create mybranch and track origin/abranch
+git checkout --track origin/abranch will only create 'abranch', not a branch with a different name.
+(That is, as commented by Sebastian Graf, if the local branch did not exist already.
+If it did, you would need git checkout -B abranch origin/abranch)
+
+First, some background: Tracking means that a local branch has its upstream set to a remote branch:
+
+# git config branch.<branch-name>.remote origin
+# git config branch.<branch-name>.merge refs/heads/branch
+
+git checkout -b branch origin/branch will:=> create/reset branch to the point referenced by origin/branch.  
+
+This includes 
+Suppose you have created some files that are locally committed not pushed then once you fire 
+
+git checkout -B <already_existed_branch_name> origin/<remote_branch_name>  
+then all the local changes will be lost and it will be synced to the remote branch .
+
+ create the branch branch (with git branch) and track the remote tracking branch origin/branch.
+ 
+ > git log => to check the all the commits with the most recent commit at the top
+ 
+ > git log -p => to see the changes that actually happened at each commit 
+ 
+ 
+ 
+ 
+ 
+ Now suppose you have 
+ one.txt and it is been added to staged area 
+ 
+ git add .
+ 
+ then again if you open the one.txt and do some changes in the working area 
+ and do 
+ 
+ git diff => gives the difference between working area and staging area 
+ 
+ git diff --staged  => difference between last commit and staged area
+ 
+ git reset HEAD                                               => moves your pointer to last committed point of your local git branch .
+ 
+ git log --oneline --graph --decorate --all                   => for graphical view 
+ 
+ git branch -m <new branch name >                             => rename the current branch 
+ 
+ git branch -m <old branch name > <new branch name >          => changing the different branch name to new name 
+ 
+ git remote show origin										  => tells you which local branch is associated with which upstream i.e. remote branch
+ 
+ git branch -av                                               => tells you what local branches and remote branches are & with the commit they are at . 
+ 
+ git branch -vv                                               => tells you what local branches you have and which commit they are at
+ 
+ git fetch origin                                             => fetches the remote branch changes but doesnot merge   check by example
+                                                                 Suppose your localslave is tracked with origin/slave 
+																 then you added one file at origin/slave 
+																 then git you do git log --oneline --graph 
+																 git by defualt doesnt know that remote branch is ahead by one commit 
+																 and just shows that localslave is synced with remote 
+																 then once you do
+																 git fetch origin then do git status , you will see that git says 
+																 remote branch is ahead by local by one commit .
+																 
+ git merget origin/slave                                      => merges the changes from remote tracking branch to the local branch 
+
+ git pull   =  git fetch origin + git merge origin/slave [in this case origin/case ] 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+Scenarion : -  Suppose after clonning from Github ,you are not able to push the changes to master 
+then you have to set the upstream as 
+git push --set-upstream origin master 
+
+executed -> git checkout -B AnekYoutube origin/AnekYoutube [since AnekYoutube branch already existed .]
+
+Had AnekYoutube [local branch ] not existed then we would have executed below command
+
+git checkout -b AnekYoutube origin/AnekYoutube
+
+git fetch origin                =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
