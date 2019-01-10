@@ -66,6 +66,10 @@ sed ' 0-3p '  => starting from 0 aand every third line will be deleted
 sed -r 's/firewall/\U&/ig'
 sed  -i ' s/old/new/ig' <privide-your-filename>   => To make changes in the same filename
 
+radar
+tutu
+
+
 
 
 
