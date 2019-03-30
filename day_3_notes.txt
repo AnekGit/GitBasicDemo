@@ -197,7 +197,13 @@ then all the local changes will be lost and it will be synced to the remote bran
  
  git branch -m <old branch name > <new branch name >          => changing the different branch name to new name 
  
- git remote show origin										  => tells you which local branch is associated with which upstream i.e. remote branch
+ git remote show origin					      => tells you which local branch is associated with which upstream i.e. remote branch
+ 
+ Note : - 
+ ============
+ Suppose you created a local branch[not created by default master ] which is not available on github then 
+ 1 . do local commit 
+ 2. git push -u origin master  ==> for untracked local branch and you want to commit at remote 
  
  git branch -av                                               => tells you what local branches and remote branches are & with the commit they are at . 
  
@@ -205,14 +211,26 @@ then all the local changes will be lost and it will be synced to the remote bran
  
  git fetch origin                                             => fetches the remote branch changes but doesnot merge   check by example
                                                                  Suppose your localslave is tracked with origin/slave 
-																 then you added one file at origin/slave 
-																 then git you do git log --oneline --graph 
-																 git by defualt doesnt know that remote branch is ahead by one commit 
-																 and just shows that localslave is synced with remote 
-																 then once you do
-																 git fetch origin then do git status , you will see that git says 
-																 remote branch is ahead by local by one commit .
-																 
+								 
+								 
+		
+		
+		
+		then you added one file at origin/slave 
+		
+		then git you do git log --oneline --graph 
+		
+		git by defualt doesnt know that remote branch is ahead by one commit 
+		
+		and just shows that localslave is synced with remote 
+		
+		then once you do
+		
+		git fetch origin then do git status , you will see that git says 
+		
+		remote branch is ahead by local by one commit .
+		
+		
  git merget origin/slave                                      => merges the changes from remote tracking branch to the local branch 
 
  git pull   =  git fetch origin + git merge origin/slave [in this case origin/case ] 
