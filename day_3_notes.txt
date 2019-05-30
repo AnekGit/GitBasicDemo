@@ -70,10 +70,37 @@ radar
 tutu
 
 
+git commit --amend 
+git log --stat
+git cherry-pick <hash>
+
+reset
+==========
+Hard and soft
+
+suppose you want to got from one commit to previous commit 
+
+git reset --soft <previous-hash>  => files that were part of upper commit will be there in staging area
+
+git reset <previous-soft>  => files that were added will be in working directory
+
+git reset --hard <hash> => will make the tracked file to the state at which they were and leaves any untracked file ...you will loose changes
+
+to remove any  untracked file ===> git clean -df 
 
 
+fetching commits after git reset --hard
+=======================================
+git reflog
+then git checkout <hasgh u want>
 
+here u will get detached head ..  so make a branch 
+git branch backup
 
+suppose you have made a commit and pushed that changes to github and other people have chacked out your changes
+then in that case do 
+git revert <previous-hash>
+it will create one more commit ==> see git log 
 
 
 
