@@ -102,6 +102,60 @@ then in that case do
 git revert <previous-hash>
 it will create one more commit ==> see git log 
 
+git rebase vs git merge
+========================
+
+git merge
+-----------
+
+master    m1     m2     m3 
+                 |
+feature          f1     f2   f3
+
+now checkout master branch 
+git checkout master 
+
+git merge --squash feature [ From which branch you want to merge ]
+after that
+git commit -m "<commit message>"
+
+finally , master will be    m1   m2   m3   f[single commit]
+
+
+git rebase
+------------
+
+CASE 1
+----------
+suppose you are in feature branchg ===>  git checkout feature 
+
+git rebase master 
+
+finally ,  feature will be  m1   m2   m3  
+                                      |
+				       f1    f2    f3 
+	
+CASE 2 
+-----------
+let's say you are in master branch
+
+git master 
+
+then 
+
+git rebase feature 
+
+then master would be      m1   m2   m3  f1  f2 
+
+
+CASE 3  Git Squashing 
+-------------------------
+IMPORTANT :-   git rebasse -i HEAD~4   [watch youtube   https://www.youtube.com/watch?v=2E23I9PzplM&t=6s]
+
+
+                                      
+				    
+
 
 
 
