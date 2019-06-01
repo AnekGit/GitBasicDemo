@@ -150,10 +150,15 @@ then master would be      m1   m2   m3  f1  f2
 
 CASE 3  Git Squashing 
 -------------------------
-IMPORTANT :-   git rebasse -i HEAD~4   [watch youtube   https://www.youtube.com/watch?v=2E23I9PzplM&t=6s]
+IMPORTANT :-   
+1. git rebasse -i HEAD~4   [watch youtube   https://www.youtube.com/watch?v=2E23I9PzplM&t=6s]
 
-
-                                      
+2. Why rebasing of older commits in public repository 
+   a bad thing ?  And 
+   How/ how many ways you can change git history
+ Ans 
+    https://www.atlassian.com/git/tutorials/rewriting-history
+                         
 				    
 
 
